@@ -158,11 +158,14 @@ if uploaded_file is not None:
     df['ONU'] = pd.to_numeric(df['ONU'], errors='coerce').fillna('').astype('string')
     df['ONU'] = df['ONU'].apply(lambda x: x[:-2] if x.endswith('.0') else x).replace('nan', '')
     # df['Endereco WMS'] = df['Endereco WMS'].fillna('')
-    df['Peso'] = df['Peso'].replace({'.': '', ',': '.'}, regex=True)
-    df['Peso'] = df['Peso'].replace('', pd.NA)
-    df['Peso'] = df['Peso'].fillna(0)
-    df['Peso'] = df['Peso'].astype(float).astype(int)
-    df['Peso'] = df['Peso'].round(2)
+    #df['Peso'] = df['Peso'].replace({'.': '', ',': '.'}, regex=True)
+    #df['Peso'] = df['Peso'].replace('', pd.NA)
+    #df['Peso'] = df['Peso'].fillna(0)
+    #df['Peso'] = df['Peso'].astype(float).astype(int)
+    #df['Peso'] = df['Peso'].round(2)
+
+    df['Peso'] = df['Peso'].str.replace(",",".")
+    df['Peso'] = pd.to_numeric(df['Peso'], errors='coerce').round(2)
     
     novos_nomes = {
     'Data de Entrada da Nota': 'Chegada',
