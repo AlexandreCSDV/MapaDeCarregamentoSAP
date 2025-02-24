@@ -136,24 +136,6 @@ if uploaded_file is not None:
          #                       'Tp. Solicitacao Coleta', 'Nº ONU', 'Razao Remetente', 'Almox. Destino', 'Mercadoria Descricao',
           #                      'Limite Entregar (Definitivo)', 'Endereco WMS', 'Data Limite Embarque', 'Zona Entrega']
 
-    novos_nomes = {
-        'Data de Entrada da Nota': 'Chegada',
-        'Nota': 'Nota Numero',
-        'Número da Etiqueta Única': 'Etiqueta Unica',
-        'CTRC': 'Chave Conhecimento',
-        'Peso': 'Peso Nota',
-        'Quantidade de Volumes': 'Nota Volumes',
-        'Prioridade': 'Tp. Solicitacao Coleta',
-        'ONU': 'Nº ONU',
-        'Fornecedor': 'Razao Remetente',
-        'Almxoarifado': 'Almox. Destino',
-        'Mercadoria': 'Mercadoria Descricao',
-        'Dt Final Entrega': 'Limite Entregar (Definitivo)',
-        'Dt Lim Embarque': 'Data Limite Embarque'
-        }
-    
-        df = df.rename(columns=novos_nomes)
-
     # Seleciona as colunas no DataFrame
     df = df[colunas_para_selecao]
     
