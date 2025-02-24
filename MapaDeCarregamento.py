@@ -179,21 +179,21 @@ if uploaded_file is not None:
     # df['Endereco WMS'] = df['Endereco WMS'].fillna('')
     df['Peso Nota'] = df['Peso Nota'].round(2)
     
-    novos_nomes = {
-        'Chegada': 'Chegada',
-        'Nota Numero': 'Nota',
-        'Etiqueta Unica': 'Etq. Unica',
-        'Chave Conhecimento': 'CTE',
-        'Peso Nota': 'KG',
-        'Nota Volumes': 'Vol',
-        'Tp. Solicitacao Coleta': 'Prior',
-        'Nº ONU': 'ONU',
-        'Razao Remetente': 'Remetente',
-        'Almox. Destino': 'Almoxarifado',
-        'Mercadoria Descricao': 'Mercadoria',
-        'Limite Entregar (Definitivo)': 'Data Entrega',
-        'Data Limite Embarque': 'Lim. Embarque',
-        'Endereco WMS': 'End. WMS'
+novos_nomes = {
+    'Chegada': 'Chegada',
+    'Nota Numero': 'Nota',
+    'Etiqueta Unica': 'Etq. Unica',
+    'Chave Conhecimento': 'CTE',
+    'Peso Nota': 'KG',
+    'Nota Volumes': 'Vol',
+    'Tp. Solicitacao Coleta': 'Prior',
+    'Nº ONU': 'ONU',
+    'Razao Remetente': 'Remetente',
+    'Almox. Destino': 'Almoxarifado',
+    'Mercadoria Descricao': 'Mercadoria',
+    'Limite Entregar (Definitivo)': 'Data Entrega',
+    'Data Limite Embarque': 'Lim. Embarque',
+    'Endereco WMS': 'End. WMS'
     }
     
     df = df.rename(columns=novos_nomes)
