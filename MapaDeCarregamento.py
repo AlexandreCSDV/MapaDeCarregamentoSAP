@@ -237,7 +237,7 @@ if uploaded_file is not None:
 
     data_hoje = datetime.now().strftime('%d%b%y').lower()
     zona_entrega_mais_comum = df['Almoxarifado'].mode()[0]
-    zona_almoxarifado = df['Zona Entrega'].mode()[0] if 'Região WMS' in df.columns else df['Almoxarifado'].mode()[0]
+    zona_almoxarifado = df['Almoxarifado'].mode()[0] if 'Região WMS' in df.columns else df['Almoxarifado'].mode()[0]
     
     # Botão para download do PDF
     st.download_button(
