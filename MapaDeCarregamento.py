@@ -22,7 +22,7 @@ def dataframe_to_pdf(dataframe_dict, buffer):
     centered_subtitle_style = ParagraphStyle(name="CenteredSubtitle", parent=subtitle_style, alignment=1)
     centered_title_style = ParagraphStyle(name="CenteredTitle", parent=title_style, alignment=1)
     
-    zona_entrega_mais_comum = df['Almoxarifado'].mode()[0]
+    # zona_entrega_mais_comum = df['Almoxarifado'].mode()[0]
     total_nfs = df['Nota'].nunique()
     peso_por_status = df.groupby('Status')['KG'].sum().round(2).to_dict()
     status_peso_text = ' \\\\ '.join([f"{status}: {peso} KG" for status, (peso) in peso_por_status.items()])
