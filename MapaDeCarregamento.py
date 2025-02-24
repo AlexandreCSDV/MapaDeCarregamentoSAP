@@ -161,7 +161,7 @@ if uploaded_file is not None:
     # df['Endereco WMS'] = df['Endereco WMS'].fillna('')
     df['Peso Nota'] = df['Peso Nota'].round(2)
     
-novos_nomes = {
+    novos_nomes = {
     'Chegada': 'Chegada',
     'Nota Numero': 'Nota',
     'Etiqueta Unica': 'Etq. Unica',
