@@ -117,7 +117,7 @@ def ordenar_dataframe(df):
         return dict(tuple(df.groupby('Almoxarifado')))
 
 # Interface do Streamlit
-st.title("Gerador de PDF de Carregamento")
+st.title("Gerador de PDF de Carregamento - Teste SAP")
 uploaded_file = st.file_uploader("Escolha um arquivo Excel", type="xlsx")
 if uploaded_file is not None:
     df = pd.read_excel(uploaded_file)
