@@ -64,8 +64,29 @@ def dataframe_to_pdf(dataframe_dict, buffer):
         elements.append(Paragraph(subtitle_text, subtitle_style))
         elements.append(Spacer(1, -0.1 * inch))
         
-        cols_para_impressao = ['Chegada', 'Nota', 'Etq. Unica', 'CTE', 'KG', 'Vol', 'Prior', 'ONU', 'Remetente',
-                               'Almoxarifado', 'Mercadoria', 'Data Entrega', 'End. WMS', 'Lim. Embarque', 'Status']
+        cols_para_impressao = ['Data de Entrada da Nota', 'Nota', 'Número da Etiqueta Única', 'CTRC', 'Peso', 'Quantidade de volumes', 'Prioridade',
+                               'ONU', 'Fornecedor', 'Almoxarifado', 'Mercadoria', 'Dt Final Entrega', 'Dt Lim Embarque']
+        #['Chegada', 'Nota', 'Etq. Unica', 'CTE', 'KG', 'Vol', 'Prior', 'ONU', 'Remetente',
+        #                      'Almoxarifado', 'Mercadoria', 'Data Entrega', 'End. WMS', 'Lim. Embarque', 'Status']
+
+        novos_nomes = {
+        'Data de Entrada da Nota': 'Chegada',
+        'Nota': 'Nota Numero',
+        'Número da Etiqueta Única': 'Etiqueta Unica',
+        'CTRC': 'Chave Conhecimento',
+        'Peso': 'Peso Nota',
+        'Quantidade de Volumes': 'Nota Volumes',
+        'Prioridade': 'Tp. Solicitacao Coleta',
+        'ONU': 'Nº ONU',
+        'Fornecedor': 'Razao Remetente',
+        'Almxoarifado': 'Almox. Destino',
+        'Mercadoria': 'Mercadoria Descricao',
+        'Dt Final Entrega': 'Limite Entregar (Definitivo)',
+        'Dt Lim Embarque': 'Data Limite Embarque'
+        }
+    
+        df = df.rename(columns=novos_nomes)
+    
         data = dataframe[cols_para_impressao].values.tolist()
         headers = dataframe[cols_para_impressao].columns.tolist()
         
@@ -152,7 +173,7 @@ if uploaded_file is not None:
     df['Etiqueta Unica'] = df['Etiqueta Unica'].apply(lambda x: x[:-2] if x.endswith('.0') else x).replace('nan', '')
     df['Nº ONU'] = pd.to_numeric(df['Nº ONU'], errors='coerce').fillna('').astype('string')
     df['Nº ONU'] = df['Nº ONU'].apply(lambda x: x[:-2] if x.endswith('.0') else x).replace('nan', '')
-    df['Endereco WMS'] = df['Endereco WMS'].fillna('')
+    # df['Endereco WMS'] = df['Endereco WMS'].fillna('')
     df['Peso Nota'] = df['Peso Nota'].round(2)
     
     novos_nomes = {
