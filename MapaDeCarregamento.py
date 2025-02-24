@@ -65,10 +65,8 @@ def dataframe_to_pdf(dataframe_dict, buffer):
         elements.append(Paragraph(subtitle_text, subtitle_style))
         elements.append(Spacer(1, -0.1 * inch))
         
-        cols_para_impressao = ['Data de Entrada da Nota', 'Nota', 'Número da Etiqueta Única', 'CTRC', 'Peso', 'Quantidade de volumes', 'Prioridade',
-                               'ONU', 'Fornecedor', 'Almoxarifado', 'Mercadoria', 'Dt Final Entrega', 'Dt Lim Embarque']
-        #['Chegada', 'Nota', 'Etq. Unica', 'CTE', 'KG', 'Vol', 'Prior', 'ONU', 'Remetente',
-        #                      'Almoxarifado', 'Mercadoria', 'Data Entrega', 'End. WMS', 'Lim. Embarque', 'Status']
+        cols_para_impressao =   ['Chegada', 'Nota', 'Etq. Unica', 'CTE', 'KG', 'Vol', 'Prior', 'ONU', 'Remetente',
+                              'Almoxarifado', 'Mercadoria', 'Data Entrega', 'Lim. Embarque', 'Status']
     
         data = dataframe[cols_para_impressao].values.tolist()
         headers = dataframe[cols_para_impressao].columns.tolist()
