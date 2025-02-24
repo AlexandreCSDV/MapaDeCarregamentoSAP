@@ -141,41 +141,41 @@ if uploaded_file is not None:
     
     # Realiza as manipulações no DataFrame
     df = df.iloc[:-2]
-    df['Chave Conhecimento'] = df['Chave Conhecimento'].fillna('')
-    df['Tp. Solicitacao Coleta'] = df['Tp. Solicitacao Coleta'].str.slice(0, 1)
-    df['Mercadoria Descricao'] = df['Mercadoria Descricao'].str.slice(0, 15)
-    df['Almox. Destino'] = df['Almox. Destino'].str.slice(0, 25)
-    df['Razao Remetente'] = df['Razao Remetente'].str.slice(0, 25)
-    df['Limite Entregar (Definitivo)'] = pd.to_datetime(df['Limite Entregar (Definitivo)'], errors='coerce')
-    df['Limite Entregar (Definitivo)'] = df['Limite Entregar (Definitivo)'].dt.strftime('%d/%m/%y')
-    df['Chegada'] = pd.to_datetime(df['Chegada'], errors='coerce')
-    df['Chegada'] = df['Chegada'].dt.strftime('%d/%m/%y %H:%M')
-    df['Data Limite Embarque'] = pd.to_datetime(df['Data Limite Embarque'], errors='coerce')
-    df['Data Limite Embarque'] = df['Data Limite Embarque'].dt.strftime('%d/%m/%y')
-    df['Nota Numero'] = df['Nota Numero'].astype(int)
-    df['Nota Volumes'] = df['Nota Volumes'].astype(int)
-    df['Etiqueta Unica'] = pd.to_numeric(df['Etiqueta Unica'], errors='coerce').fillna('').astype('string')
-    df['Etiqueta Unica'] = df['Etiqueta Unica'].apply(lambda x: x[:-2] if x.endswith('.0') else x).replace('nan', '')
-    df['Nº ONU'] = pd.to_numeric(df['Nº ONU'], errors='coerce').fillna('').astype('string')
-    df['Nº ONU'] = df['Nº ONU'].apply(lambda x: x[:-2] if x.endswith('.0') else x).replace('nan', '')
+    df['CTRC'] = df['CTRC'].fillna('')
+    df['Prioridade'] = df['Prioridade'].str.slice(0, 1)
+    df['Mercadoria'] = df['Mercadoria'].str.slice(0, 15)
+    df['Almoxarifado'] = df['Almoxarifado'].str.slice(0, 25)
+    df['Fornecedor'] = df['Fornecedor'].str.slice(0, 25)
+    df['Dt Final Entrega'] = pd.to_datetime(df['Dt Final Entrega'], errors='coerce')
+    df['Dt Final Entrega'] = df['Dt Final Entrega'].dt.strftime('%d/%m/%y')
+    df['Data de Entrada da Nota'] = pd.to_datetime(df['Data de Entrada da Nota'], errors='coerce')
+    df['Data de Entrada da Nota'] = df['Data de Entrada da Nota'].dt.strftime('%d/%m/%y %H:%M')
+    df['Dt Lim Embarque'] = pd.to_datetime(df['Dt Lim Embarque'], errors='coerce')
+    df['Dt Lim Embarque'] = df['Dt Lim Embarque'].dt.strftime('%d/%m/%y')
+    df['Nota'] = df['Nota'].astype(int)
+    df['Quantidade de volumes'] = df['Quantidade de volumes'].astype(int)
+    df['Número da Etiqueta Única'] = pd.to_numeric(df['Número da Etiqueta Única'], errors='coerce').fillna('').astype('string')
+    df['Número da Etiqueta Única'] = df['Número da Etiqueta Única'].apply(lambda x: x[:-2] if x.endswith('.0') else x).replace('nan', '')
+    df['ONU'] = pd.to_numeric(df['ONU'], errors='coerce').fillna('').astype('string')
+    df['ONU'] = df['ONU'].apply(lambda x: x[:-2] if x.endswith('.0') else x).replace('nan', '')
     # df['Endereco WMS'] = df['Endereco WMS'].fillna('')
-    df['Peso Nota'] = df['Peso Nota'].round(2)
+    df['Peso'] = df['Peso'].round(2)
     
     novos_nomes = {
-    'Chegada': 'Chegada',
-    'Nota Numero': 'Nota',
-    'Etiqueta Unica': 'Etq. Unica',
-    'Chave Conhecimento': 'CTE',
-    'Peso Nota': 'KG',
-    'Nota Volumes': 'Vol',
-    'Tp. Solicitacao Coleta': 'Prior',
-    'Nº ONU': 'ONU',
-    'Razao Remetente': 'Remetente',
-    'Almox. Destino': 'Almoxarifado',
-    'Mercadoria Descricao': 'Mercadoria',
-    'Limite Entregar (Definitivo)': 'Data Entrega',
-    'Data Limite Embarque': 'Lim. Embarque',
-    'Endereco WMS': 'End. WMS'
+    'Data de Entrada da Nota': 'Chegada',
+    'Nota': 'Nota',
+    'Número da Etiqueta Única': 'Etq. Unica',
+    'CTRC': 'CTE',
+    'Peso': 'KG',
+    'Quantidade de Volumes': 'Vol',
+    'Prioridade': 'Prior',
+    'ONU': 'ONU',
+    'Fornecedor': 'Remetente',
+    'Almoxarifado': 'Almoxarifado',
+    'Mercadoria': 'Mercadoria',
+    'Dt Final Entrega': 'Data Entrega',
+    'Dt Lim Embarque': 'Lim. Embarque',
+    # 'Endereco WMS': 'End. WMS'
     }
     
     df = df.rename(columns=novos_nomes)
