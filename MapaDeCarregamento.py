@@ -170,7 +170,7 @@ if uploaded_file is not None:
     'Número da Etiqueta Única': 'Etq. Unica',
     'CTRC': 'CTE',
     'Peso': 'KG',
-    'Quantidade de Volumes': 'Vol',
+    'Quantidade de volumes': 'Vol',
     'Prioridade': 'Prior',
     'ONU': 'ONU',
     'Fornecedor': 'Remetente',
